@@ -37,7 +37,7 @@ const AddUserForm = (props) =>
         const newUser = {
         "username": newUsername,
         "age": newAge,
-        id: Math.random.toString()}
+        id: Math.random().toString()}
 
         
 
