@@ -1,4 +1,7 @@
 import {useState} from 'react'
+import Card from "../UI/Card"
+import classes from './AddUserForm.module.css'
+import Button from '../UI/Button'
 const AddUserForm = (props) => 
 {
 
@@ -23,6 +26,13 @@ const AddUserForm = (props) =>
     const submitHandler = (event) => {
         event.preventDefault();
 
+        if(newUsername.trim().length ===0 || newAge.trim().length === 0) {
+            return;
+        }
+
+        if(+newAge < 1) {
+            return;
+        }
 
         const newUser = {
         "username": newUsername,
@@ -44,20 +54,20 @@ const AddUserForm = (props) =>
 
 
     return (
-
+        <Card className={classes.input}>
       <form onSubmit={submitHandler}>
-          <h2>Add New User</h2>
+          <h1>Add New User</h1>
           <h4>Name:</h4>
-          <input value={newUsername} onChange={userNameHandler}></input>
+          <input type="text" value={newUsername} onChange={userNameHandler}></input>
           <h4>Age:</h4>
          
-          <input value={newAge} onChange={ageHandler}></input>
-            <button type="submit">Submit</button>
+          <input type="number" value={newAge} onChange={ageHandler}></input>
+            <Button type="submit">Submit</Button>
 
 
 
       </form>
-
+      </Card>
     );
 
 
